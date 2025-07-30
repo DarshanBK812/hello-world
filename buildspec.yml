@@ -1,15 +1,13 @@
 version: 0.2
-
 phases:
-  install:
-    runtime-versions:
-      java: corretto11    # ensures mvn is available
   build:
     commands:
-      - echo "Building JAR…"
-      - mvn clean package -DskipTests
-
+      - echo Packaging JAR file...
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Build complete.
 artifacts:
   files:
-    - target/hello-world.jar   # matches your actual JAR name
+    - target/hello-world.jar
   discard-paths: yes
