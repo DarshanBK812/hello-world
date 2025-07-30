@@ -2,17 +2,14 @@ version: 0.2
 
 phases:
   install:
-    # ensure Java is available
     runtime-versions:
-      java: corretto11
+      java: corretto11    # ensures mvn is available
   build:
     commands:
-      - echo "Packaging JAR..."
+      - echo "Building JAR…"
       - mvn clean package -DskipTests
 
 artifacts:
   files:
-    # point exactly at your jar, or use a wildcard
-    - target/hello-world.jar
-  # remove the target/ path so EB picks it up at the root of the bundle
+    - target/hello-world.jar   # matches your actual JAR name
   discard-paths: yes
